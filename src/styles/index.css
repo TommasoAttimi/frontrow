@@ -1,0 +1,74 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Design tokens (FrontRow handoff §3/§4) → Tailwind v4 theme
+   ============================================================ */
+@theme {
+  /* Backgrounds */
+  --color-app: #0d0c16;
+  --color-page: #0f0e17;
+  --color-card: #111118;
+  --color-surface: #16151f;
+
+  /* Accent */
+  --color-orange: #e8752a;
+  --color-orange-dim: rgba(232, 117, 42, 0.12);
+  --color-orange-mid: rgba(232, 117, 42, 0.25);
+  --color-orange-glow: rgba(232, 117, 42, 0.4);
+
+  /* Text */
+  --color-fg: #f0eeeb;
+  --color-fg-muted: #c0bece;
+  --color-fg-subtle: #8a88a0;
+  --color-fg-faint: #6a6882;
+  --color-fg-disabled: #45445a;
+
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-accent: rgba(232, 117, 42, 0.25);
+
+  /* Semantic */
+  --color-success: #1ed760;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+
+  /* Fonts */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-app);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+  *:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+  }
+}
