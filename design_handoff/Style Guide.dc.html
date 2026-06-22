@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>* { box-sizing: border-box; -webkit-font-smoothing: antialiased; } body { margin: 0; }</style>
+</helmet>
+
+<div style="width:max-content; min-width:100%; min-height:100vh; background:#0f0e17; padding:56px; box-sizing:border-box;">
+
+  <!-- HEADER -->
+  <div style="display:flex; align-items:center; gap:24px; margin-bottom:72px;">
+    <svg width="48" height="48" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <h1 style="font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.6px;">Concert Tracker</h1>
+      <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#5a5a72; margin:6px 0 0;">Design System & Brand Guidelines · June 2026</p>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 1: LOGO & MARK ══ -->
+  <div style="margin-bottom:72px;">
+    <h2 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.5px;">Logo & Mark</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#8a88a0; margin:0 0 28px; line-height:1.6;">The wristband is our core symbol — representing admission, proof of presence, and the physical moment of being at a concert.</p>
+
+    <!-- Primary logo -->
+    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:32px; margin-bottom:28px;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#45445a; margin:0 0 20px;">Primary Logo — Option B (Dark + Orange)</p>
+      <div style="display:flex; gap:32px; align-items:center; margin-bottom:24px;">
+        <svg width="120" height="120" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#f0eeeb; margin:0 0 8px; letter-spacing:-0.3px;">Wristband Icon</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:#8a88a0; margin:0; line-height:1.6;">Dark rounded square (#111118) with orange wristband (#e8752a) running through the centre. Perforation line, "FR" stub text, and check icon on the right. Reads clearly at all sizes.</p>
+        </div>
+      </div>
+
+      <!-- Size scale -->
+      <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#45445a; margin:0 0 16px;">Recommended Sizes</p>
+      <div style="display:flex; gap:20px; align-items:center;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><svg width="96" height="96" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">128px</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><svg width="64" height="64" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text></svg><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">80px</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><svg width="48" height="48" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text></svg><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">44px (nav)</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><svg width="32" height="32" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/></svg><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">32px</span></div>
+      </div>
+    </div>
+
+    <!-- Alternative logo -->
+    <div style="background:rgba(232,117,42,0.08); border:1px solid rgba(232,117,42,0.15); border-radius:20px; padding:32px;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#45445a; margin:0 0 20px;">Alternative Logo — Option C (Inverted)</p>
+      <div style="display:flex; gap:32px; align-items:center;">
+        <svg width="120" height="120" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#e8752a" opacity="0.92"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#2a2420"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="#f0eeeb">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.3)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="rgba(255,255,255,0.4)" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#f0eeeb; margin:0 0 8px; letter-spacing:-0.3px;">Inverted Wristband</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:#8a88a0; margin:0; line-height:1.6;">Muted orange background (#e8752a @ 92% opacity) with darker wristband (#2a2420). Use on darker page backgrounds or when the standard logo would blend. Maintains full recognisability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2: WORDMARKS & LOCKUPS ══ -->
+  <div style="margin-bottom:72px;">
+    <h2 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.5px;">Wordmarks & Lockups</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#8a88a0; margin:0 0 28px; line-height:1.6;">Logo pairing with wordmark. Use horizontal for UI and print; stacked for compact spaces.</p>
+
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <!-- Horizontal lockup dark -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px; display:flex; align-items:center; gap:24px;">
+        <svg width="64" height="64" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:#f0eeeb; letter-spacing:-0.6px;">FrontRow</span>
+        <span style="font-family:'DM Sans',sans-serif; font-size:13px; color:#45445a; margin-left:auto;">Horizontal • Dark</span>
+      </div>
+
+      <!-- Stacked lockup dark -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px; display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center;">
+        <svg width="64" height="64" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text></svg>
+        <div>
+          <p style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.5px;">FrontRow</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:12px; color:#45445a; margin:4px 0 0;">Stacked • Dark</p>
+        </div>
+      </div>
+
+      <!-- Wordmark only -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:#f0eeeb; letter-spacing:-0.8px;">FrontRow</span>
+        <span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#45445a;">Wordmark only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 3: COLOR PALETTE ══ -->
+  <div style="margin-bottom:72px;">
+    <h2 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.5px;">Color Palette</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#8a88a0; margin:0 0 28px; line-height:1.6;">Dark mode core colors. Orange is the sole accent; neutrals provide depth.</p>
+
+    <!-- Primary colors -->
+    <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#45445a; margin:0 0 16px;">Primary</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; margin-bottom:36px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#111118; border:1px solid rgba(255,255,255,0.1); border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Dark Base</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#111118</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#0d0c16; border:1px solid rgba(255,255,255,0.1); border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">App Background</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#0d0c16</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#0f0e17; border:1px solid rgba(255,255,255,0.1); border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Page Background</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#0f0e17</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#e8752a; border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Orange Accent</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#e8752a</p>
+      </div>
+    </div>
+
+    <!-- Text colors -->
+    <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#45445a; margin:0 0 16px;">Text & Neutrals</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#f0eeeb; border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Primary Text</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#f0eeeb</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#c0bece; border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Secondary Text</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#c0bece</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#8a88a0; border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Tertiary Text</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#8a88a0</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:16px;">
+        <div style="width:100%; height:60px; background:#45445a; border-radius:10px; margin-bottom:10px;"></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#c0bece; margin:0;">Muted Text</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:3px 0 0;">#45445a</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4: TYPOGRAPHY ══ -->
+  <div style="margin-bottom:72px;">
+    <h2 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.5px;">Typography</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#8a88a0; margin:0 0 28px; line-height:1.6;">Two typeface system: bold, modern headings + readable body text.</p>
+
+    <!-- Font families -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:36px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px;">
+        <p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#f0eeeb; margin:0 0 12px; letter-spacing:-0.3px;">Syne</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:12px; color:#8a88a0; margin:0 0 16px; line-height:1.5;">Geometric, assertive sans-serif. For all headlines, titles, and bold labels. Weights: 600, 700, 800.</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div><p style="font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.5px;">Concert Tracker</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">800 weight — Display</p></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:#c0bece; margin:0; letter-spacing:-0.3px;">Section Heading</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">700 weight — UI</p></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px;">
+        <p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#f0eeeb; margin:0 0 12px; letter-spacing:-0.3px;">DM Sans</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:12px; color:#8a88a0; margin:0 0 16px; line-height:1.5;">Geometric, neutral sans-serif. For body copy, labels, and UI text. Weights: 300, 400, 500, 600.</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div><p style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:400; color:#f0eeeb; margin:0;">Every show. Every moment.</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">400 weight — Body</p></div>
+          <div><p style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#c0bece; margin:0; text-transform:uppercase; letter-spacing:0.08em;">Tab Label</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">600 weight — UI / Label</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#45445a; margin:0 0 16px;">Type Scale</p>
+    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px; display:flex; flex-direction:column; gap:16px;">
+      <div><p style="font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.6px;">32px Display / H1</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">Syne 800 • Main page heading</p></div>
+      <div><p style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.5px;">22px Title / H2</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">Syne 800 • Section heading</p></div>
+      <div><p style="font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:#f0eeeb; margin:0; letter-spacing:-0.3px;">16px Subtitle / H3</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">Syne 700 • Card title</p></div>
+      <div><p style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:400; color:#f0eeeb; margin:0;">14px Body Text</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">DM Sans 400 • Standard body copy</p></div>
+      <div><p style="font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:#c0bece; margin:0;">13px UI Label</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">DM Sans 500 • Button, form labels</p></div>
+      <div><p style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#8a88a0; margin:0; text-transform:uppercase; letter-spacing:0.08em;">11px Cap Label</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:2px 0 0;">DM Sans 600 • Section labels, meta</p></div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 5: FAVICON & APP ICON ══ -->
+  <div style="margin-bottom:72px;">
+    <h2 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.5px;">App Icon & Favicon</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:#8a88a0; margin:0 0 28px; line-height:1.6;">Single icon used across all contexts: home screen, browser tab, splash.</p>
+
+    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:32px; display:flex; gap:40px; align-items:center;">
+      <svg width="180" height="180" viewBox="0 0 80 80" style="flex:none;"><rect width="80" height="80" rx="18" fill="#111118"/><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"/><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/><text x="28" y="44" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"/><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#45445a; margin:0 0 12px;">Usage</p>
+        <ul style="font-family:'DM Sans',sans-serif; font-size:13px; color:#c0bece; margin:0; padding:0 0 0 20px; line-height:1.8;">
+          <li>iOS & Android home screen (180×180px minimum)</li>
+          <li>Browser tab favicon (32×32px)</li>
+          <li>App splash screen center</li>
+          <li>PWA manifest icon (192×192, 512×512)</li>
+          <li>Social media profile picture</li>
+        </ul>
+        <p style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a; margin:16px 0 0;">Always use the primary logo (Option B). Safe area: 8px padding from icon bounds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:40px; margin-top:72px;">
+    <p style="font-family:'DM Sans',sans-serif; font-size:12px; color:#45445a; margin:0;">Concert Tracker Design System — June 2026 · Version 1.0</p>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

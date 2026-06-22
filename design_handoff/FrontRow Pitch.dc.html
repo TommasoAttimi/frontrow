@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0c16;
+      --bg2: #111118;
+      --orange: #e8752a;
+      --orange-dim: rgba(232,117,42,0.12);
+      --orange-mid: rgba(232,117,42,0.25);
+      --text: #f0eeeb;
+      --text2: #c0bece;
+      --text3: #8a88a0;
+      --text4: #45445a;
+      --border: rgba(255,255,255,0.07);
+      --type-hero: 96px;
+      --type-title: 72px;
+      --type-sub: 44px;
+      --type-body: 32px;
+      --type-small: 24px;
+      --type-label: 18px;
+      --pad-x: 120px;
+      --pad-y: 90px;
+      --gap: 48px;
+      --gap-sm: 28px;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; background: #000; }
+    @keyframes fr_pulse { 0%,100%{opacity:0.4} 50%{opacity:0.7} }
+  </style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%" data-uneditable="">
+
+  <!-- ════════════════════════════════════════
+       SLIDE 01 · COVER
+  ════════════════════════════════════════ -->
+  <section data-label="Cover" data-screen-label="01" style="background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+    <!-- Ambient glow -->
+    <div style="position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:900px; height:600px; background:radial-gradient(ellipse, rgba(232,117,42,0.12) 0%, transparent 70%); pointer-events:none;"></div>
+    <!-- Dot grid -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25;" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#3a3a50"></circle></pattern></defs><rect width="100%" height="100%" fill="url(#dots)"></rect></svg>
+    <!-- Logo + wordmark -->
+    <div style="display:flex; align-items:center; gap:28px; margin-bottom:40px; position:relative; z-index:1;">
+      <svg width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"></rect><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"></rect><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"></line><text x="28" y="44" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"></circle><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); letter-spacing:-2px; line-height:1;">FrontRow</span>
+    </div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-sub); font-weight:300; color:var(--text3); margin:0 0 56px; letter-spacing:0.02em; position:relative; z-index:1;">Every show. Every moment.</p>
+    <div style="height:1px; width:480px; background:linear-gradient(to right, transparent, var(--orange), transparent); position:relative; z-index:1; margin-bottom:48px;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); letter-spacing:0.12em; text-transform:uppercase; position:relative; z-index:1;">Concert tracking · Community · Analytics · June 2026</p>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 02 · THE PROBLEM
+  ════════════════════════════════════════ -->
+  <section data-label="The Problem" data-screen-label="02" style="background:var(--bg); display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <div style="position:absolute; bottom:-100px; right:-100px; width:600px; height:600px; background:radial-gradient(ellipse, rgba(232,117,42,0.06), transparent 70%); pointer-events:none;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 36px;">The Problem</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-hero); font-weight:800; color:var(--text); margin:0 0 24px; line-height:1.05; letter-spacing:-2px; max-width:1100px;">You remember every show.<br>They live nowhere.</h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-body); color:var(--text3); margin:0 0 80px; max-width:780px; line-height:1.5;">Fans track their playlists, their runs, their sleep. But the most meaningful shared experience in their lives — live music — is scattered across photos, texts, and memory.</p>
+    <!-- 3 stats -->
+    <div style="display:flex; gap:0;">
+      <div style="flex:1; border-right:1px solid var(--border); padding-right:56px;">
+        <p style="font-family:'Syne',sans-serif; font-size:80px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-2px; line-height:1;">32%</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">of regular gig-goers attend<br>10+ shows per year</p>
+      </div>
+      <div style="flex:1; border-right:1px solid var(--border); padding:0 56px;">
+        <p style="font-family:'Syne',sans-serif; font-size:80px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-2px; line-height:1;">0</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">dedicated apps for logging<br>and tracking live shows</p>
+      </div>
+      <div style="flex:1; padding-left:56px;">
+        <p style="font-family:'Syne',sans-serif; font-size:80px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-2px; line-height:1;">$34B</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">global live music market<br>in 2025, growing 12% YoY</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 03 · INTRODUCING FRONTROW
+  ════════════════════════════════════════ -->
+  <section data-label="Introducing FrontRow" data-screen-label="03" style="background:#110f1e; display:flex; align-items:center; padding:var(--pad-y) var(--pad-x); gap:100px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:50%; left:40%; transform:translate(-50%,-50%); width:700px; height:700px; background:radial-gradient(ellipse, rgba(232,117,42,0.07), transparent 70%); pointer-events:none;"></div>
+    <!-- Left: message -->
+    <div style="flex:1; max-width:760px; position:relative; z-index:1;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 32px;">Introducing FrontRow</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 28px; line-height:1.05; letter-spacing:-1.5px;">Your concert history,<br>finally in one place.</h2>
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-body); color:var(--text3); margin:0 0 56px; line-height:1.6;">FrontRow is a mobile PWA for live music fans to log, track, and relive every concert — with social features and statistics.</p>
+      <!-- Feature pills -->
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">Concert logging</span></div>
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">Festival tracking</span></div>
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">Setlists + setlist.fm</span></div>
+        
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">World Map</span></div>
+        
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">Social layer</span></div>
+        <div style="height:42px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.25); border-radius:12px; padding:0 18px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:500; color:var(--orange);">Achievements</span></div>
+      </div>
+    </div>
+    <!-- Right: phone mockup — splash + home -->
+    <div style="display:flex; gap:24px; align-items:center; flex:none; position:relative; z-index:1;">
+      <!-- Phone 1: Splash -->
+      <div style="width:270px; height:582px; border-radius:40px; background:#0a0912; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6px rgba(255,255,255,0.04), 0 24px 64px rgba(0,0,0,0.8); flex:none;">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:88px; height:24px; background:#000; border-radius:12px; z-index:10;"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(160deg, #0a0912 0%, #1a0e20 100%);">
+          <div style="position:absolute; bottom:-60px; left:50%; transform:translateX(-50%); width:320px; height:320px; background:radial-gradient(ellipse, rgba(232,117,42,0.18), transparent 65%);"></div>
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.2;" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="d2" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="#3a3a50"></circle></pattern></defs><rect width="100%" height="100%" fill="url(#d2)"></rect></svg>
+        </div>
+        <div style="position:absolute; top:52px; left:24px; right:24px; bottom:24px; display:flex; flex-direction:column; justify-content:flex-end;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:auto; margin-top:28px;">
+            <svg width="28" height="28" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"></rect><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"></rect><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"></line><text x="28" y="44" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="12" fill="white">FR</text></svg>
+            <span style="font-family:'Syne',sans-serif; font-size:14px; font-weight:800; color:#f0eeeb; letter-spacing:-0.3px;">FrontRow</span>
+          </div>
+          <h3 style="font-family:'Syne',sans-serif; font-size:30px; font-weight:800; color:#f0eeeb; margin:0 0 6px; line-height:1.1; letter-spacing:-0.8px;">Every show,<br>every</h3>
+          <h3 style="font-family:'Syne',sans-serif; font-size:30px; font-weight:800; color:#e8752a; margin:0 0 28px; line-height:1.1; letter-spacing:-0.8px;">moment.</h3>
+          <div style="width:100%; height:48px; background:#e8752a; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;"><span style="font-family:'DM Sans',sans-serif; font-size:13px; font-weight:700; color:#fff;">Get started</span></div>
+          <div style="width:100%; height:44px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:14px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:13px; color:#8a88a0;">Sign in</span></div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:88px; height:4px; background:rgba(255,255,255,0.18); border-radius:2px;"></div>
+      </div>
+      <!-- Phone 2: My Shows (slightly larger, front) -->
+      <div style="width:290px; height:620px; border-radius:42px; background:#08080d; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6px rgba(255,255,255,0.05), 0 28px 72px rgba(0,0,0,0.9); flex:none; margin-top:-24px;">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:94px; height:26px; background:#000; border-radius:13px; z-index:10;"></div>
+        <div style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow:hidden;">
+          <div style="padding:14px 20px 0;">
+            <p style="font-family:'Syne',sans-serif; font-size:19px; font-weight:800; color:#f0eeeb; margin:0 0 10px; letter-spacing:-0.4px;">My Shows</p>
+            <div style="display:flex; gap:6px; margin-bottom:12px;">
+              <div style="height:24px; background:#e8752a; border-radius:7px; padding:0 10px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#fff;">All</span></div>
+              <div style="height:24px; background:rgba(255,255,255,0.05); border-radius:7px; padding:0 10px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">Concerts</span></div>
+              <div style="height:24px; background:rgba(255,255,255,0.05); border-radius:7px; padding:0 10px; display:flex; align-items:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">Festivals</span></div>
+            </div>
+            <p style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a; margin:0 0 8px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;">2026 · 3 shows</p>
+            <!-- Concert cards -->
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+                <div style="width:38px; height:38px; background:linear-gradient(135deg, #1a2a3a, #0d1a2a); border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,0.4);">GL</span></div>
+                <div style="flex:1; min-width:0;"><p style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#f0eeeb; margin:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Glastonbury 2026</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:1px 0 0;">Pilton, UK · Jun 25–29</p></div>
+                <div style="height:18px; background:#e8752a; border-radius:5px; padding:0 7px; display:flex; align-items:center; flex:none;"><span style="font-family:'DM Sans',sans-serif; font-size:9px; color:#fff; font-weight:600; text-transform:uppercase;">UPCOMING</span></div>
+              </div>
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+                <div style="width:38px; height:38px; background:linear-gradient(135deg, #1e1028, #3a1050); border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,0.4);">FDC</span></div>
+                <div style="flex:1; min-width:0;"><p style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#f0eeeb; margin:0;">Fontaines D.C.</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:1px 0 0;">Roundhouse · London · May 22</p></div>
+              </div>
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+                <div style="width:38px; height:38px; background:linear-gradient(135deg, #1a3010, #0a2000); border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,0.4);">BP</span></div>
+                <div style="flex:1; min-width:0;"><p style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#f0eeeb; margin:0;">Bloc Party</p><p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:1px 0 0;">Alexandra Palace · Apr 5</p></div>
+              </div>
+            </div>
+            <p style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a; margin:12px 0 8px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;">2025 · 31 shows</p>
+            <div style="display:flex; flex-direction:column; gap:7px; opacity:0.6;">
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+                <div style="width:38px; height:38px; background:rgba(255,255,255,0.05); border-radius:10px; flex:none;"></div>
+                <div style="flex:1;"><div style="width:70%; height:11px; background:rgba(255,255,255,0.07); border-radius:4px; margin-bottom:5px;"></div><div style="width:45%; height:9px; background:rgba(255,255,255,0.04); border-radius:3px;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:96px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 04 · LOG EVERY SHOW
+  ════════════════════════════════════════ -->
+  <section data-label="Log Every Show" data-screen-label="04" style="background:var(--bg); display:flex; align-items:center; padding:var(--pad-y) var(--pad-x); gap:100px; position:relative; overflow:hidden;">
+    <!-- Phones: Concert Detail + Log Form -->
+    <div style="display:flex; gap:28px; align-items:center; flex:none;">
+      <!-- Phone: Concert Detail -->
+      <div style="width:270px; height:582px; border-radius:40px; background:#08080d; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6px rgba(255,255,255,0.04), 0 24px 64px rgba(0,0,0,0.8); flex:none; margin-top:20px;">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:88px; height:24px; background:#000; border-radius:12px; z-index:10;"></div>
+        <div style="position:absolute; top:0; left:0; right:0; height:180px; background:linear-gradient(150deg, #1a1a2e 0%, #2d1b4e 60%, #0a0a1a 100%); overflow:hidden;">
+          <div style="position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); width:240px; height:160px; background:radial-gradient(ellipse, rgba(124,58,237,0.2), transparent 65%);"></div>
+          <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(to bottom, transparent, #08080d);"></div>
+          <div style="position:absolute; top:52px; left:20px; right:20px;">
+            <div style="width:52px; height:52px; border-radius:14px; background:linear-gradient(135deg, #1e1028, #40183e); border:1.5px solid rgba(255,255,255,0.1); margin-bottom:8px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:rgba(255,255,255,0.4);">RH</span></div>
+            <p style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.4px;">Radiohead</p>
+            <p style="font-family:'DM Sans',sans-serif; font-size:11px; color:#6a6882; margin:2px 0 0;">Reading Festival · Jun 20, 2023</p>
+          </div>
+        </div>
+        <div style="position:absolute; top:176px; left:0; right:0; padding:0 18px;">
+          <div style="display:flex; gap:0; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; overflow:hidden; margin-bottom:12px;">
+            <div style="flex:1; padding:8px; text-align:center; border-right:1px solid rgba(255,255,255,0.07);"><p style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#e8752a; margin:0;">28</p><p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Total seen</p></div>
+            <div style="flex:1; padding:8px; text-align:center; border-right:1px solid rgba(255,255,255,0.07);"><p style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#e8752a; margin:0;">7</p><p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Countries</p></div>
+            <div style="flex:1; padding:8px; text-align:center;"><p style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#e8752a; margin:0;">£85</p><p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Ticket</p></div>
+          </div>
+          <div style="display:flex; gap:8px; margin-bottom:12px;">
+            <div style="flex:1; height:36px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:10px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#8a88a0;">Setlist</span></div>
+            <div style="flex:1; height:36px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:10px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#8a88a0;">Photos</span></div>
+            <div style="flex:1; height:36px; background:rgba(232,117,42,0.1); border:1px solid rgba(232,117,42,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#e8752a;">Share</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:10px 12px;">
+            <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; text-transform:uppercase; letter-spacing:0.06em; font-weight:600; margin:0 0 6px;">Personal note</p>
+            <p style="font-family:'DM Sans',sans-serif; font-size:11px; color:#8a88a0; margin:0; line-height:1.4; font-style:italic;">"Incredible closer. Idioteque in the rain."</p>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:88px; height:4px; background:rgba(255,255,255,0.18); border-radius:2px;"></div>
+      </div>
+      <!-- Phone: Log a Show form -->
+      <div style="width:290px; height:620px; border-radius:42px; background:#08080d; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6px rgba(255,255,255,0.05), 0 28px 72px rgba(0,0,0,0.9); flex:none;">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:94px; height:26px; background:#000; border-radius:13px; z-index:10;"></div>
+        <div style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow:hidden; padding:14px 20px;">
+          <p style="font-family:'Syne',sans-serif; font-size:17px; font-weight:800; color:#f0eeeb; margin:0 0 16px; letter-spacing:-0.3px;">Log a Show</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div>
+              <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Artist</p>
+              <div style="height:42px; background:rgba(255,255,255,0.04); border:1.5px solid #e8752a; border-radius:12px; display:flex; align-items:center; justify-content:space-between; padding:0 12px;"><span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#f0eeeb;">Arctic Monkeys</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg></div>
+            </div>
+            <div>
+              <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Venue</p>
+              <div style="height:42px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.12); border-radius:12px; display:flex; align-items:center; padding:0 12px;"><span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#f0eeeb;">O2 Arena · London</span></div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <div style="flex:1;">
+                <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Date</p>
+                <div style="height:42px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.12); border-radius:12px; display:flex; align-items:center; padding:0 12px;"><span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#f0eeeb;">Aug 12, 2026</span></div>
+              </div>
+              <div style="flex:1;">
+                <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Ticket</p>
+                <div style="height:42px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.12); border-radius:12px; display:flex; align-items:center; padding:0 12px;"><span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#f0eeeb;">£85.00</span></div>
+              </div>
+            </div>
+            <div>
+              <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Went with</p>
+              <div style="height:42px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.12); border-radius:12px; display:flex; align-items:center; gap:8px; padding:0 12px;">
+                <div style="width:24px; height:24px; border-radius:7px; background:#e8752a; display:flex; align-items:center; justify-content:center; flex:none;"><span style="font-family:'Syne',sans-serif; font-size:9px; font-weight:700; color:#fff;">AS</span></div>
+                <span style="font-family:'DM Sans',sans-serif; font-size:12px; color:#f0eeeb;">@alexsmith</span>
+              </div>
+            </div>
+            <div>
+              <p style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#8a88a0; margin:0 0 5px; text-transform:uppercase; letter-spacing:0.06em;">Type</p>
+              <div style="display:flex; gap:6px;">
+                <div style="flex:1; height:36px; background:rgba(232,117,42,0.1); border:1.5px solid #e8752a; border-radius:10px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#e8752a; font-weight:600;">Concert</span></div>
+                <div style="flex:1; height:36px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#45445a;">Festival</span></div>
+              </div>
+            </div>
+            <div style="height:44px; background:#e8752a; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-top:4px; box-shadow:0 6px 20px rgba(232,117,42,0.35);"><span style="font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:#fff;">Save Show</span></div>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:96px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px;"></div>
+      </div>
+    </div>
+    <!-- Right: copy -->
+    <div style="flex:1; max-width:680px;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 32px;">The Product</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 48px; line-height:1.05; letter-spacing:-1.5px;">Log everything.<br>Miss nothing.</h2>
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="width:44px; height:44px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:12px; flex:none; display:flex; align-items:center; justify-content:center; margin-top:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 8px; letter-spacing:-0.4px;">Rich concert profiles</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">Artist, venue, date, ticket price, setlist, photos, ticket scan, personal diary entry, concert buddies — all in one card.</p></div>
+        </div>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="width:44px; height:44px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:12px; flex:none; display:flex; align-items:center; justify-content:center; margin-top:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path><circle cx="9" cy="7" r="4" stroke="#e8752a" stroke-width="1.8"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 8px; letter-spacing:-0.4px;">Concert buddies</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">Tag friends who attended — FrontRow users get their show auto-logged too, creating a shared memory.</p></div>
+        </div>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="width:44px; height:44px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:12px; flex:none; display:flex; align-items:center; justify-content:center; margin-top:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path><circle cx="6" cy="18" r="3" stroke="#e8752a" stroke-width="1.8"></circle><circle cx="18" cy="16" r="3" stroke="#e8752a" stroke-width="1.8"></circle></svg></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 8px; letter-spacing:-0.4px;">Setlist sync</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">Build your setlist manually or pull it live from setlist.fm. Every song, in order, every time.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 05 · YEAR WRAPPED
+  ════════════════════════════════════════ -->
+  <section data-label="Year Wrapped" data-screen-label="05" style="background:linear-gradient(135deg, #1a0e08 0%, #2d1400 40%, #0d0c16 100%); display:flex; align-items:center; padding:var(--pad-y) var(--pad-x); gap:100px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-100px; right:-100px; width:700px; height:700px; background:radial-gradient(ellipse, rgba(232,117,42,0.18), transparent 65%); pointer-events:none;"></div>
+    <div style="position:absolute; bottom:-80px; left:200px; width:500px; height:400px; background:radial-gradient(ellipse, rgba(232,117,42,0.08), transparent 70%); pointer-events:none;"></div>
+    <!-- Left: copy + stats -->
+    <div style="flex:1; position:relative; z-index:1;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 32px;">Signature Feature</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 24px; line-height:1.05; letter-spacing:-1.5px;">Your Year<br>in Music.</h2>
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-body); color:var(--text3); margin:0 0 60px; line-height:1.5; max-width:640px;">Every December, FrontRow generates a personalised annual report — Spotify Wrapped, but for the shows you were actually in the crowd for.</p>
+      <!-- Stat cards -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:620px;">
+        <div style="background:rgba(232,117,42,0.08); border:1px solid rgba(232,117,42,0.2); border-radius:18px; padding:20px 22px;">
+          <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1.5px; line-height:1;">127</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:4px 0 0;">Shows attended</p>
+        </div>
+        <div style="background:rgba(232,117,42,0.08); border:1px solid rgba(232,117,42,0.2); border-radius:18px; padding:20px 22px;">
+          <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1.5px; line-height:1;">14</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:4px 0 0;">Countries</p>
+        </div>
+        <div style="background:rgba(232,117,42,0.08); border:1px solid rgba(232,117,42,0.2); border-radius:18px; padding:20px 22px;">
+          <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1.5px; line-height:1;">£8.4k</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:4px 0 0;">Total spent</p>
+        </div>
+        <div style="background:rgba(232,117,42,0.08); border:1px solid rgba(232,117,42,0.2); border-radius:18px; padding:20px 22px;">
+          <p style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1px; line-height:1.1;">Radiohead</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:4px 0 0;">Top artist · 28 shows</p>
+        </div>
+      </div>
+    </div>
+    <!-- Right: phone wrapped -->
+    <div style="flex:none; position:relative; z-index:1;">
+      <div style="width:310px; height:665px; border-radius:44px; background:#08080d; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6.5px rgba(255,255,255,0.05), 0 30px 80px rgba(0,0,0,0.9);">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:96px; height:26px; background:#000; border-radius:13px; z-index:10;"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(160deg, #1a0e08 0%, #2d1400 50%, #08080d 100%);">
+          <div style="position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(ellipse, rgba(232,117,42,0.25), transparent 65%);"></div>
+        </div>
+        <div style="position:absolute; top:52px; left:22px; right:22px; bottom:22px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"></rect><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"></rect></svg>
+            <span style="font-family:'Syne',sans-serif; font-size:14px; font-weight:800; color:#f0eeeb; letter-spacing:-0.2px;">FrontRow</span>
+          </div>
+          <p style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:#e8752a; margin:0; letter-spacing:-1px; line-height:1;">2025</p>
+          <p style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#f0eeeb; margin:0 0 20px; letter-spacing:-0.4px; line-height:1.1;">Wrapped</p>
+          <!-- Mini bar chart -->
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 14px; margin-bottom:10px;">
+            <p style="font-family:'DM Sans',sans-serif; font-size:9px; font-weight:600; color:#45445a; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px;">Shows per year</p>
+            <div style="display:flex; align-items:flex-end; gap:5px; height:60px;">
+              <div style="flex:1; background:rgba(232,117,42,0.2); border-radius:3px 3px 0 0;"></div>
+              <div style="flex:1; background:rgba(232,117,42,0.3); border-radius:3px 3px 0 0; height:40%;"></div>
+              <div style="flex:1; background:rgba(232,117,42,0.4); border-radius:3px 3px 0 0; height:45%;"></div>
+              <div style="flex:1; background:rgba(232,117,42,0.5); border-radius:3px 3px 0 0; height:55%;"></div>
+              <div style="flex:1; background:rgba(232,117,42,0.65); border-radius:3px 3px 0 0; height:65%;"></div>
+              <div style="flex:1; background:rgba(232,117,42,0.8); border-radius:3px 3px 0 0; height:80%;"></div>
+              <div style="flex:1; background:#e8752a; border-radius:3px 3px 0 0; height:100%; box-shadow:0 0 10px rgba(232,117,42,0.5);"></div>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px; text-align:center;">
+              <p style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#e8752a; margin:0; letter-spacing:-0.5px;">127</p>
+              <p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Shows</p>
+            </div>
+            <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px; text-align:center;">
+              <p style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#e8752a; margin:0; letter-spacing:-0.5px;">14</p>
+              <p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Countries</p>
+            </div>
+            <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px; text-align:center;">
+              <p style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#e8752a; margin:0; letter-spacing:-0.5px;">£8.4k</p>
+              <p style="font-family:'DM Sans',sans-serif; font-size:8px; color:#45445a; margin:1px 0 0; text-transform:uppercase; letter-spacing:0.04em;">Spent</p>
+            </div>
+          </div>
+          <div style="margin-top:10px; background:rgba(232,117,42,0.1); border:1px solid rgba(232,117,42,0.2); border-radius:12px; padding:10px 12px;">
+            <p style="font-family:'DM Sans',sans-serif; font-size:9px; color:#e8752a; text-transform:uppercase; letter-spacing:0.06em; font-weight:600; margin:0 0 4px;">Top Artist</p>
+            <p style="font-family:'Syne',sans-serif; font-size:15px; font-weight:800; color:#f0eeeb; margin:0; letter-spacing:-0.3px;">Radiohead · 28 shows</p>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:100px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 06 · WORLD MAP
+  ════════════════════════════════════════ -->
+  <section data-label="Your World Map" data-screen-label="06" style="background:var(--bg); display:flex; align-items:center; padding:var(--pad-y) var(--pad-x); gap:100px; position:relative; overflow:hidden;">
+    <!-- Big SVG map -->
+    <div style="flex:1.2; position:relative;">
+      <svg width="940" height="600" viewBox="0 0 390 310" style="width:100%; height:auto; display:block; opacity:0.95;">
+        <rect width="390" height="310" fill="#0a0c14" rx="20"></rect>
+        <path d="M42 60 L85 55 L105 70 L115 100 L108 130 L95 155 L80 170 L65 165 L55 150 L48 130 L38 110 L35 85 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"></path>
+        <path d="M90 175 L115 170 L130 185 L135 210 L130 240 L118 260 L100 265 L88 250 L82 225 L85 200 Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"></path>
+        <path d="M172 45 L200 42 L215 52 L218 68 L208 80 L195 85 L178 80 L168 68 L166 55 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" stroke-width="0.8"></path>
+        <path d="M175 92 L210 88 L225 105 L228 135 L220 165 L210 190 L195 200 L180 195 L168 175 L165 150 L168 120 L172 100 Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"></path>
+        <path d="M218 42 L290 38 L330 50 L345 70 L340 100 L315 115 L280 118 L255 110 L230 100 L218 80 L215 60 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"></path>
+        <path d="M295 170 L330 165 L345 180 L340 205 L320 215 L300 210 L290 195 L292 178 Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"></path>
+        <!-- UK - large cluster -->
+        <circle cx="182" cy="57" r="16" fill="#e8752a" opacity="0.12"></circle>
+        <circle cx="182" cy="57" r="10" fill="#e8752a" opacity="0.3"></circle>
+        <circle cx="182" cy="57" r="5.5" fill="#e8752a" opacity="0.7"></circle>
+        <circle cx="182" cy="57" r="3" fill="#e8752a"></circle>
+        <!-- Italy -->
+        <circle cx="196" cy="70" r="9" fill="#e8752a" opacity="0.15"></circle>
+        <circle cx="196" cy="70" r="5" fill="#e8752a" opacity="0.5"></circle>
+        <circle cx="196" cy="70" r="2.5" fill="#e8752a"></circle>
+        <!-- Germany -->
+        <circle cx="192" cy="59" r="7" fill="#e8752a" opacity="0.2"></circle>
+        <circle cx="192" cy="59" r="3.5" fill="#e8752a" opacity="0.6"></circle>
+        <!-- France -->
+        <circle cx="184" cy="66" r="6" fill="#e8752a" opacity="0.2"></circle>
+        <circle cx="184" cy="66" r="3" fill="#e8752a" opacity="0.5"></circle>
+        <!-- USA -->
+        <circle cx="90" cy="95" r="8" fill="#e8752a" opacity="0.2"></circle>
+        <circle cx="90" cy="95" r="4" fill="#e8752a" opacity="0.5"></circle>
+        <circle cx="60" cy="92" r="6" fill="#e8752a" opacity="0.15"></circle>
+        <circle cx="60" cy="92" r="3" fill="#e8752a" opacity="0.4"></circle>
+        <!-- Japan -->
+        <circle cx="322" cy="82" r="5" fill="#e8752a" opacity="0.3"></circle>
+        <circle cx="322" cy="82" r="2.5" fill="#e8752a"></circle>
+        <!-- Australia -->
+        <circle cx="315" cy="192" r="4.5" fill="#e8752a" opacity="0.25"></circle>
+        <circle cx="315" cy="192" r="2" fill="#e8752a" opacity="0.6"></circle>
+        <!-- Tooltip -->
+        <rect x="148" y="28" width="88" height="24" rx="7" fill="#0d0c16" stroke="rgba(232,117,42,0.4)" stroke-width="1"></rect>
+        <text x="192" y="44" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="9.5" fill="#e8752a">UK · 78 shows</text>
+      </svg>
+    </div>
+    <!-- Right: copy + stats -->
+    <div style="flex:1; max-width:680px;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 32px;">World Map</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 24px; line-height:1.05; letter-spacing:-1.5px;">Every show,<br>on the map.</h2>
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-body); color:var(--text3); margin:0 0 52px; line-height:1.5;">A globe that grows with you. Every concert plotted, every city claimed, filtered by year. Orange dots sized by frequency — see at a glance where your music life has taken you.</p>
+      <div style="display:flex; gap:0; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:18px; overflow:hidden;">
+        <div style="flex:1; padding:24px 20px; border-right:1px solid var(--border); text-align:center;">
+          <p style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1px; line-height:1;">14</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:6px 0 0;">Countries</p>
+        </div>
+        <div style="flex:1; padding:24px 20px; border-right:1px solid var(--border); text-align:center;">
+          <p style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1px; line-height:1;">38</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:6px 0 0;">Cities</p>
+        </div>
+        <div style="flex:1; padding:24px 20px; text-align:center;">
+          <p style="font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-1px; line-height:1;">52k</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text3); margin:6px 0 0;">km travelled</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 07 · COMMUNITY
+  ════════════════════════════════════════ -->
+  <section data-label="Built for Community" data-screen-label="07" style="background:#110f1e; display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:900px; height:600px; background:radial-gradient(ellipse, rgba(232,117,42,0.05), transparent 70%); pointer-events:none;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 28px; position:relative; z-index:1;">Social Layer</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 64px; line-height:1.05; letter-spacing:-1.5px; max-width:900px; position:relative; z-index:1;">Music is better shared.<br>FrontRow makes it social.</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:24px; position:relative; z-index:1;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:28px 24px;">
+        <div style="width:48px; height:48px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path><circle cx="9" cy="7" r="4" stroke="#e8752a" stroke-width="1.8"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+        <p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 12px; letter-spacing:-0.4px;">Concert buddies</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">Tag friends at shows. Each tag auto-logs the concert in their FrontRow — zero friction.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:28px 24px;">
+        <div style="width:48px; height:48px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+        <p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 12px; letter-spacing:-0.4px;">Mutual shows</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">See which concerts you and a friend share. A leaderboard of who you've spent the most shows with.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:28px 24px;">
+        <div style="width:48px; height:48px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" stroke="#e8752a" stroke-width="1.8"></circle><circle cx="6" cy="12" r="3" stroke="#e8752a" stroke-width="1.8"></circle><circle cx="18" cy="19" r="3" stroke="#e8752a" stroke-width="1.8"></circle><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+        <p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 12px; letter-spacing:-0.4px;">Shareable cards</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">One-tap share card for each show and your Year Wrapped. Designed for Instagram Stories.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:28px 24px;">
+        <div style="width:48px; height:48px; background:var(--orange-dim); border:1px solid rgba(232,117,42,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="6" stroke="#e8752a" stroke-width="1.8"></circle><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+        <p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:700; color:var(--text); margin:0 0 12px; letter-spacing:-0.4px;">Achievements</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.5;">"Century Club", "Globe Trotter", "Summer Run" — 42 badges to earn, shared on your public profile.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 08 · FOR PHOTOGRAPHERS & PRESS
+  ════════════════════════════════════════ -->
+  <section data-label="For Photographers &amp; Press" data-screen-label="08" style="background:var(--bg); display:flex; align-items:center; padding:var(--pad-y) var(--pad-x); gap:100px; position:relative; overflow:hidden;">
+    <div style="position:absolute; bottom:-100px; left:-50px; width:500px; height:500px; background:radial-gradient(ellipse, rgba(232,117,42,0.07), transparent 70%); pointer-events:none;"></div>
+    <div style="flex:1; position:relative; z-index:1;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 32px;">Accreditation Mode</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 24px; line-height:1.05; letter-spacing:-1.5px;">Built for press,<br>photographers<br>and videographers.</h2>
+      <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-body); color:var(--text3); margin:0 0 48px; line-height:1.5; max-width:680px;">A subset of fans access shows professionally. FrontRow supports their workflow with a dedicated accreditation mode, unique in the market.</p>
+      <div style="display:flex; flex-direction:column; gap:22px;">
+        <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:18px 20px;">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex:none;"></div>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); margin:0;">Accreditation type — Photo / Video / Press / All-access</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:18px 20px;">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex:none;"></div>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); margin:0;">Photo pit access toggle + 1st-3-songs rule tracking</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:18px 20px;">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex:none;"></div>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); margin:0;">Client / publication name + link to published article or gallery</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:18px 20px;">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex:none;"></div>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); margin:0;">Separate "Press Pass" achievement track and public portfolio</p>
+        </div>
+      </div>
+    </div>
+    <!-- Right: accreditation form mockup -->
+    <div style="flex:none; position:relative; z-index:1;">
+      <div style="width:310px; height:665px; border-radius:44px; background:#08080d; position:relative; overflow:hidden; box-shadow:0 0 0 5px #1c1b2a, 0 0 0 6.5px rgba(255,255,255,0.05), 0 30px 80px rgba(0,0,0,0.9);">
+        <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); width:96px; height:26px; background:#000; border-radius:13px; z-index:10;"></div>
+        <div style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow:hidden; padding:16px 20px;">
+          <p style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#f0eeeb; margin:0 0 4px; letter-spacing:-0.3px;">Log a Show</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a; margin:0 0 14px;">Arctic Monkeys · O2 Arena · Aug 12</p>
+          <!-- Accreditation toggle (open) -->
+          <div style="background:rgba(232,117,42,0.06); border:1px solid rgba(232,117,42,0.2); border-radius:14px; padding:12px 14px; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#e8752a" stroke-width="1.8"></rect><path d="M3 9h18M9 21V9" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg>
+                <span style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:#e8752a;">Accreditation</span>
+              </div>
+              <div style="width:36px; height:20px; background:#e8752a; border-radius:10px; position:relative;"><div style="position:absolute; right:3px; top:3px; width:14px; height:14px; background:#fff; border-radius:7px;"></div></div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div>
+                <p style="font-family:'DM Sans',sans-serif; font-size:9px; font-weight:600; color:#6a6882; margin:0 0 4px; text-transform:uppercase; letter-spacing:0.06em;">Type</p>
+                <div style="display:flex; gap:5px;">
+                  <div style="height:26px; background:#e8752a; border-radius:7px; padding:0 9px; display:flex; align-items:center; flex:none;"><span style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:#fff;">Photo</span></div>
+                  <div style="height:26px; background:rgba(255,255,255,0.05); border-radius:7px; padding:0 9px; display:flex; align-items:center; flex:none;"><span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a;">Video</span></div>
+                  <div style="height:26px; background:rgba(255,255,255,0.05); border-radius:7px; padding:0 9px; display:flex; align-items:center; flex:none;"><span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a;">Press</span></div>
+                  <div style="height:26px; background:rgba(255,255,255,0.05); border-radius:7px; padding:0 9px; display:flex; align-items:center; flex:none;"><span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#45445a;">All</span></div>
+                </div>
+              </div>
+              <div>
+                <p style="font-family:'DM Sans',sans-serif; font-size:9px; font-weight:600; color:#6a6882; margin:0 0 4px; text-transform:uppercase; letter-spacing:0.06em;">Client / Publication</p>
+                <div style="height:30px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:9px; display:flex; align-items:center; padding:0 10px;"><span style="font-family:'DM Sans',sans-serif; font-size:11px; color:#f0eeeb;">NME Magazine</span></div>
+              </div>
+              <div>
+                <p style="font-family:'DM Sans',sans-serif; font-size:9px; font-weight:600; color:#6a6882; margin:0 0 4px; text-transform:uppercase; letter-spacing:0.06em;">Published link</p>
+                <div style="height:30px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:9px; display:flex; align-items:center; padding:0 10px;"><span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#6a6882;">nme.com/reviews/…</span></div>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#c0bece;">Photo pit access</span>
+                <div style="width:30px; height:16px; background:#e8752a; border-radius:8px; position:relative;"><div style="position:absolute; right:2px; top:2px; width:12px; height:12px; background:#fff; border-radius:6px;"></div></div>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-family:'DM Sans',sans-serif; font-size:10px; color:#c0bece;">1st 3 songs rule</span>
+                <div style="width:30px; height:16px; background:#e8752a; border-radius:8px; position:relative;"><div style="position:absolute; right:2px; top:2px; width:12px; height:12px; background:#fff; border-radius:6px;"></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="height:40px; background:#e8752a; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(232,117,42,0.3);"><span style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:#fff;">Save Show</span></div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:100px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 09 · MARKET OPPORTUNITY
+  ════════════════════════════════════════ -->
+  <section data-label="Market Opportunity" data-screen-label="09" style="background:var(--bg); display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:50%; left:60%; transform:translate(-50%,-50%); width:800px; height:800px; background:radial-gradient(ellipse, rgba(232,117,42,0.06), transparent 70%); pointer-events:none;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 28px; position:relative; z-index:1;">Market</p>
+    <div style="display:flex; gap:100px; align-items:flex-start; position:relative; z-index:1;">
+      <div style="flex:1;">
+        <div style="margin-bottom:64px;">
+          <p style="font-family:'Syne',sans-serif; font-size:120px; font-weight:800; color:var(--orange); margin:0; letter-spacing:-4px; line-height:0.9;">$34B</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-sub); color:var(--text); margin:16px 0 0; line-height:1.2;">Global live music market, 2025</p>
+          <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0;">Growing at 12% year on year</p>
+        </div>
+        <div style="display:flex; gap:48px;">
+          <div>
+            <p style="font-family:'Syne',sans-serif; font-size:56px; font-weight:800; color:var(--text); margin:0; letter-spacing:-1.5px; line-height:1;">780M</p>
+            <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">Global live music<br>attendees per year</p>
+          </div>
+          <div>
+            <p style="font-family:'Syne',sans-serif; font-size:56px; font-weight:800; color:var(--text); margin:0; letter-spacing:-1.5px; line-height:1;">32M</p>
+            <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">Superfans attending<br>10+ shows per year</p>
+          </div>
+          <div>
+            <p style="font-family:'Syne',sans-serif; font-size:56px; font-weight:800; color:var(--text); margin:0; letter-spacing:-1.5px; line-height:1;">$0</p>
+            <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:8px 0 0; line-height:1.4;">Dedicated tracking<br>apps today</p>
+          </div>
+        </div>
+      </div>
+      <div style="flex:none; width:480px;">
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); font-weight:600; color:var(--text4); letter-spacing:0.06em; text-transform:uppercase; margin:0 0 20px;">Comparable apps by users</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); width:140px; flex:none;">Letterboxd</span>
+            <div style="flex:1; height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden;"><div style="width:72%; height:100%; background:rgba(232,117,42,0.5); border-radius:5px;"></div></div>
+            <span style="font-family:'Syne',sans-serif; font-size:var(--type-small); font-weight:700; color:var(--text2); width:60px; text-align:right; flex:none;">13M</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); width:140px; flex:none;">Goodreads</span>
+            <div style="flex:1; height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden;"><div style="width:100%; height:100%; background:rgba(255,255,255,0.2); border-radius:5px;"></div></div>
+            <span style="font-family:'Syne',sans-serif; font-size:var(--type-small); font-weight:700; color:var(--text2); width:60px; text-align:right; flex:none;">150M</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2); width:140px; flex:none;">Last.fm</span>
+            <div style="flex:1; height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden;"><div style="width:40%; height:100%; background:rgba(255,255,255,0.15); border-radius:5px;"></div></div>
+            <span style="font-family:'Syne',sans-serif; font-size:var(--type-small); font-weight:700; color:var(--text2); width:60px; text-align:right; flex:none;">80M</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-family:'Syne',sans-serif; font-size:var(--type-small); color:var(--orange); font-weight:700; width:140px; flex:none;">FrontRow</span>
+            <div style="flex:1; height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden;"><div style="width:4%; height:100%; background:#e8752a; border-radius:5px; box-shadow:0 0 8px rgba(232,117,42,0.6);"></div></div>
+            <span style="font-family:'Syne',sans-serif; font-size:var(--type-small); font-weight:700; color:var(--orange); width:60px; text-align:right; flex:none;">Day 0</span>
+          </div>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); margin:20px 0 0; line-height:1.5;">Live music is the last major cultural behaviour without a dedicated tracking platform. The category is open.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 10 · BUSINESS MODEL
+  ════════════════════════════════════════ -->
+  <section data-label="Business Model" data-screen-label="10" style="background:#110f1e; display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 28px;">Revenue</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 56px; line-height:1.05; letter-spacing:-1.5px;">Freemium with a clear upgrade path.</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+      <!-- Free -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:24px; padding:32px 28px;">
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--text4); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 16px;">Free</p>
+        <p style="font-family:'Syne',sans-serif; font-size:56px; font-weight:800; color:var(--text); margin:0 0 4px; letter-spacing:-1.5px; line-height:1;">$0</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); margin:0 0 32px;">Forever</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Unlimited concert logging</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Basic stats dashboard</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Friends + social features</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Setlist building</span></div>
+        </div>
+      </div>
+      <!-- Premium -->
+      <div style="background:rgba(232,117,42,0.06); border:1.5px solid rgba(232,117,42,0.3); border-radius:24px; padding:32px 28px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; right:0; background:#e8752a; border-radius:0 24px 0 14px; padding:6px 16px;"><span style="font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:0.06em;">Most popular</span></div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 16px;">Premium</p>
+        <p style="font-family:'Syne',sans-serif; font-size:56px; font-weight:800; color:var(--text); margin:0 0 4px; letter-spacing:-1.5px; line-height:1;">$4.99</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); margin:0 0 32px;">per month</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Everything in Free</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Year Wrapped + shareable cards</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">World Map + travel stats</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Advanced analytics</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Tour completion tracker</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--orange); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Concert alerts + wishlist</span></div>
+        </div>
+      </div>
+      <!-- Partnerships -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:24px; padding:32px 28px;">
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--text4); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 16px;">Partnerships</p>
+        <p style="font-family:'Syne',sans-serif; font-size:var(--type-sub); font-weight:800; color:var(--text); margin:0 0 32px; letter-spacing:-0.5px; line-height:1.2;">B2B &amp; API</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Ticketing platform integrations</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Venue analytics dashboard</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Artist fanbase insights</span></div>
+          <div style="display:flex; align-items:center; gap:12px;"><div style="width:6px; height:6px; background:var(--text4); border-radius:50%; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Spotify / Last.fm integration</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 11 · ROADMAP
+  ════════════════════════════════════════ -->
+  <section data-label="Product Roadmap" data-screen-label="11" style="background:var(--bg); display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:1000px; height:500px; background:radial-gradient(ellipse, rgba(232,117,42,0.04), transparent 70%); pointer-events:none;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 28px; position:relative; z-index:1;">Roadmap</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 64px; line-height:1.05; letter-spacing:-1.5px; position:relative; z-index:1;">Three phases to market.</h2>
+    <!-- Timeline -->
+    <div style="display:flex; gap:0; position:relative; z-index:1;">
+      <!-- Phase 1 -->
+      <div style="flex:1; border-right:1px solid var(--border); padding-right:48px;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+          <div style="width:40px; height:40px; background:#e8752a; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;"><span style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#fff;">1</span></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:800; color:var(--text); margin:0; letter-spacing:-0.4px;">MVP Launch</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--orange); margin:3px 0 0;">Q3 2026</p></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Concert logging + detail pages</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Festival structure support</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Setlist.fm integration</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Basic stats + profile</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e8752a" stroke-width="2.5" stroke-linecap="round"></path></svg><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Google auth + PWA install</span></div>
+        </div>
+      </div>
+      <!-- Phase 2 -->
+      <div style="flex:1; border-right:1px solid var(--border); padding:0 48px;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+          <div style="width:40px; height:40px; background:rgba(232,117,42,0.15); border:1.5px solid rgba(232,117,42,0.35); border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;"><span style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#e8752a;">2</span></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:800; color:var(--text); margin:0; letter-spacing:-0.4px;">Growth</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); margin:3px 0 0;">Q4 2026 – Q1 2027</p></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.15); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Social layer + concert buddies</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.15); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Year Wrapped</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.15); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">World Map + achievements</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.15); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Premium subscription launch</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.15); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3);">Press / accreditation mode</span></div>
+        </div>
+      </div>
+      <!-- Phase 3 -->
+      <div style="flex:1; padding-left:48px;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+          <div style="width:40px; height:40px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;"><span style="font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:var(--text4);">3</span></div>
+          <div><p style="font-family:'Syne',sans-serif; font-size:var(--type-body); font-weight:800; color:var(--text4); margin:0; letter-spacing:-0.4px;">Scale</p><p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); color:var(--text4); margin:3px 0 0;">2027 and beyond</p></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.08); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text4);">Native iOS + Android apps</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.08); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text4);">Venue / artist partnerships</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.08); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text4);">B2B analytics API</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.08); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text4);">Spotify + ticketing integrations</span></div>
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:16px; height:16px; border:1.5px solid rgba(255,255,255,0.08); border-radius:4px; flex:none;"></div><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text4);">International localisation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 12 · WHAT'S BUILT
+  ════════════════════════════════════════ -->
+  <section data-label="What's Built" data-screen-label="12" style="background:#110f1e; display:flex; flex-direction:column; justify-content:center; padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:0; right:0; width:600px; height:600px; background:radial-gradient(ellipse at top right, rgba(232,117,42,0.08), transparent 65%); pointer-events:none;"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-label); font-weight:600; color:var(--orange); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 28px; position:relative; z-index:1;">Traction</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); margin:0 0 56px; line-height:1.05; letter-spacing:-1.5px; position:relative; z-index:1;">37 screens. Full design system.<br>Ready for development.</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; position:relative; z-index:1;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:24px 22px;">
+        <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0 0 6px; letter-spacing:-1.5px; line-height:1;">37</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.4;">Fully designed screens across core, social, analytics, and system states</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:24px 22px;">
+        <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0 0 6px; letter-spacing:-1.5px; line-height:1;">3</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.4;">Deliverables — app screens, brand style guide, logo system</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:24px 22px;">
+        <p style="font-family:'Syne',sans-serif; font-size:52px; font-weight:800; color:var(--orange); margin:0 0 6px; letter-spacing:-1.5px; line-height:1;">0</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text3); margin:0; line-height:1.4;">Competitors in the dedicated concert-logging category</p>
+      </div>
+    </div>
+    <!-- Deliverable list -->
+    <div style="display:flex; gap:16px; margin-top:24px; position:relative; z-index:1;">
+      <div style="flex:1; background:rgba(232,117,42,0.06); border:1px solid rgba(232,117,42,0.15); border-radius:16px; padding:18px 20px; display:flex; align-items:center; gap:14px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="#e8752a" stroke-width="1.8"></rect><path d="M9 7h6M9 11h6M9 15h4" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Complete high-fidelity prototype — 37 screens, dark UI, mobile-first PWA</span>
+      </div>
+      <div style="flex:1; background:rgba(232,117,42,0.06); border:1px solid rgba(232,117,42,0.15); border-radius:16px; padding:18px 20px; display:flex; align-items:center; gap:14px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e8752a" stroke-width="1.8"></circle><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Brand identity — logo (3 variants), lockups, type scale, color system</span>
+      </div>
+      <div style="flex:1; background:rgba(232,117,42,0.06); border:1px solid rgba(232,117,42,0.15); border-radius:16px; padding:18px 20px; display:flex; align-items:center; gap:14px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" stroke="#e8752a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">Developer handoff package — specs, tokens, interaction notes, data model</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SLIDE 13 · CLOSE
+  ════════════════════════════════════════ -->
+  <section data-label="FrontRow" data-screen-label="13" style="background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+    <!-- Background glows -->
+    <div style="position:absolute; top:-150px; left:50%; transform:translateX(-50%); width:1200px; height:800px; background:radial-gradient(ellipse, rgba(232,117,42,0.1) 0%, transparent 65%); pointer-events:none;"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15;" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dotsCover2" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#3a3a50"></circle></pattern></defs><rect width="100%" height="100%" fill="url(#dotsCover2)"></rect></svg>
+    <!-- Content -->
+    <div style="display:flex; align-items:center; gap:28px; margin-bottom:36px; position:relative; z-index:1;">
+      <svg width="80" height="80" viewBox="0 0 80 80"><rect width="80" height="80" rx="18" fill="#111118"></rect><rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a"></rect><line x1="56" y1="28" x2="56" y2="52" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-dasharray="3,2"></line><text x="28" y="44" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="12" fill="white">FR</text><circle cx="63" cy="40" r="4" fill="rgba(255,255,255,0.28)"></circle><path d="M61 40 L62.2 41.5 L65.5 38" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-family:'Syne',sans-serif; font-size:var(--type-title); font-weight:800; color:var(--text); letter-spacing:-2px; line-height:1; position:relative; z-index:1;">FrontRow</span>
+    </div>
+    <p style="font-family:'DM Sans',sans-serif; font-size:var(--type-sub); font-weight:300; color:var(--text3); margin:0 0 64px; letter-spacing:0.02em; position:relative; z-index:1;">Every show. Every moment.</p>
+    <div style="height:1px; width:480px; background:linear-gradient(to right, transparent, var(--orange), transparent); position:relative; z-index:1; margin-bottom:60px;"></div>
+    <div style="display:flex; gap:32px; position:relative; z-index:1;">
+      <div style="height:58px; background:#e8752a; border-radius:16px; padding:0 40px; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(232,117,42,0.35);"><span style="font-family:'Syne',sans-serif; font-size:var(--type-small); font-weight:700; color:#fff; letter-spacing:-0.3px;">Start the conversation</span></div>
+      <div style="height:58px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:0 40px; display:flex; align-items:center; justify-content:center;"><span style="font-family:'DM Sans',sans-serif; font-size:var(--type-small); color:var(--text2);">hello@frontrowapp.com</span></div>
+    </div>
+  </section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
