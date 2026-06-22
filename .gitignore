@@ -41,3 +41,6 @@ test-results/
 # Supabase local
 supabase/.branches
 supabase/.temp
+
+# Claude local settings (machine-specific)
+.claude/settings.local.json
