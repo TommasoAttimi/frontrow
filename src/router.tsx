@@ -4,15 +4,20 @@ import {
   RequireOnboarding,
   RequireProfile,
 } from '@/features/auth/components/Guards'
+import { TabLayout } from '@/app/layouts/TabLayout'
 import { OnboardingSplash } from '@/features/auth/pages/OnboardingSplash'
 import { SignUp } from '@/features/auth/pages/SignUp'
 import { SignIn } from '@/features/auth/pages/SignIn'
 import { OAuthCallback } from '@/features/auth/pages/OAuthCallback'
 import { UsernameSelect } from '@/features/auth/pages/UsernameSelect'
 import { Home } from '@/features/home/pages/Home'
+import { OnThisDay } from '@/features/home/pages/OnThisDay'
+import { MyShows } from '@/features/concerts/pages/MyShows'
 import { LogShow } from '@/features/concerts/pages/LogShow'
 import { EditConcert } from '@/features/concerts/pages/EditConcert'
 import { ConcertDetail } from '@/features/concerts/pages/ConcertDetail'
+import { Stats } from '@/features/stats/pages/Stats'
+import { Profile } from '@/features/profile/pages/Profile'
 
 export const router = createBrowserRouter([
   {
@@ -31,10 +36,21 @@ export const router = createBrowserRouter([
   {
     element: <RequireProfile />,
     children: [
-      { path: '/home', element: <Home /> },
+      // Main tabbed app
+      {
+        element: <TabLayout />,
+        children: [
+          { path: '/home', element: <Home /> },
+          { path: '/shows', element: <MyShows /> },
+          { path: '/stats', element: <Stats /> },
+          { path: '/profile', element: <Profile /> },
+        ],
+      },
+      // Full-screen routes (no bottom nav)
       { path: '/log', element: <LogShow /> },
       { path: '/show/:id', element: <ConcertDetail /> },
       { path: '/show/:id/edit', element: <EditConcert /> },
+      { path: '/on-this-day', element: <OnThisDay /> },
     ],
   },
   { path: '*', element: <Navigate to="/" replace /> },
