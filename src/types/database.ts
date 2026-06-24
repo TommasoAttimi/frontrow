@@ -788,6 +788,10 @@ export type Database = {
         Returns: Database["public"]["Tables"]["venues"]["Row"]
       }
       is_concert_owner: { Args: { cid: string }; Returns: boolean }
+      save_festival: {
+        Args: { p_concert_id: string | null; p_payload: Json }
+        Returns: string
+      }
       username_available: { Args: { name: string }; Returns: boolean }
     }
     Enums: {

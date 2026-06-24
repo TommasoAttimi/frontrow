@@ -6,6 +6,7 @@ import { Spinner } from '@/components/ui/Spinner'
 import { useConcert } from '../hooks/useConcerts'
 import { useDeleteConcert } from '../hooks/useConcertMutations'
 import { formatConcertDate } from '@/lib/utils/dates'
+import { cn } from '@/lib/utils/cn'
 import { toast } from '@/stores/useUIStore'
 import type { ConcertDetail as ConcertDetailData } from '../api/concerts'
 
@@ -131,24 +132,28 @@ function InfoTab({ data }: { data: ConcertDetailData }) {
   const lineup = [...data.lineup].sort((a, b) => a.billing_order - b.billing_order)
   return (
     <div className="space-y-6">
-      <section>
-        <h2 className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.08em] text-fg-muted">
-          Lineup
-        </h2>
-        <ul className="space-y-1.5">
-          {lineup.map((l) => (
-            <li
-              key={l.artist.id}
-              className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3 py-2"
-            >
-              <span className="font-body text-sm text-fg">{l.artist.name}</span>
-              <span className="font-body text-xs text-fg-subtle">
-                {ROLE_LABEL[l.role] ?? l.role}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {data.type === 'festival' ? (
+        <FestivalSchedule data={data} />
+      ) : (
+        <section>
+          <h2 className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.08em] text-fg-muted">
+            Lineup
+          </h2>
+          <ul className="space-y-1.5">
+            {lineup.map((l) => (
+              <li
+                key={l.artist.id}
+                className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3 py-2"
+              >
+                <span className="font-body text-sm text-fg">{l.artist.name}</span>
+                <span className="font-body text-xs text-fg-subtle">
+                  {ROLE_LABEL[l.role] ?? l.role}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {(data.tour_name || data.ticket_type || data.ticket_price_paid != null) && (
         <section className="space-y-2">
@@ -191,4 +196,56 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function Placeholder({ text }: { text: string }) {
   return <p className="py-8 text-center font-body text-sm text-fg-subtle">{text}</p>
+}
+
+function FestivalSchedule({ data }: { data: ConcertDetailData }) {
+  const days = [...data.festival_days].sort((a, b) => a.day_order - b.day_order)
+  if (days.length === 0) {
+    return <p className="py-4 font-body text-sm text-fg-subtle">No lineup added yet.</p>
+  }
+  return (
+    <div className="space-y-6">
+      {days.map((day, i) => (
+        <section key={day.id}>
+          <h2 className="mb-2 font-display text-base font-bold text-fg">
+            Day {i + 1} · {formatConcertDate(day.date)}
+          </h2>
+          <div className="space-y-3">
+            {[...day.stages]
+              .sort((a, b) => a.stage_order - b.stage_order)
+              .map((stage) => (
+                <div
+                  key={stage.id}
+                  className="rounded-xl border border-border bg-white/[0.02] p-3"
+                >
+                  <p className="mb-2 font-body text-[11px] font-semibold uppercase tracking-[0.08em] text-orange">
+                    {stage.stage_name}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {[...stage.performances]
+                      .sort((a, b) => a.perf_order - b.perf_order)
+                      .map((p) => (
+                        <li key={p.id} className="flex items-center justify-between gap-2">
+                          <span
+                            className={cn(
+                              'font-body text-sm',
+                              p.attended ? 'text-fg' : 'text-fg-faint line-through',
+                            )}
+                          >
+                            {p.artist.name}
+                          </span>
+                          <span className="shrink-0 font-body text-xs text-fg-subtle">
+                            {p.start_time ? p.start_time.slice(0, 5) : ''}
+                            {p.end_time ? `–${p.end_time.slice(0, 5)}` : ''}
+                          </span>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )
 }

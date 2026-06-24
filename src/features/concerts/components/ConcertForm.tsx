@@ -33,40 +33,8 @@ export function ConcertForm({
     defaultValues,
   })
 
-  const type = watch('type')
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 px-6 pb-28 pt-4">
-      <Controller
-        control={control}
-        name="type"
-        render={({ field }) => (
-          <SegmentedControl
-            label="Type"
-            value={field.value}
-            onChange={field.onChange}
-            options={[
-              { value: 'concert', label: 'Concert' },
-              { value: 'festival', label: 'Festival' },
-            ]}
-          />
-        )}
-      />
-
-      {type === 'festival' && (
-        <>
-          <Input
-            label="Festival name"
-            placeholder="Glastonbury"
-            {...register('festival_name')}
-          />
-          <p className="-mt-2 font-body text-xs text-fg-subtle">
-            The full day → stage → set builder arrives in a later update. For now this
-            saves as a festival with its headline details.
-          </p>
-        </>
-      )}
-
       <Controller
         control={control}
         name="status"
@@ -91,7 +59,7 @@ export function ConcertForm({
         name="headliner"
         render={({ field }) => (
           <ArtistField
-            label={type === 'festival' ? 'Headline act' : 'Headliner'}
+            label="Headliner"
             value={field.value}
             onChange={field.onChange}
             error={errors.headliner?.message as string | undefined}

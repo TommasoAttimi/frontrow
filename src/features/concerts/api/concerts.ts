@@ -18,6 +18,30 @@ export interface ConcertListItem {
   venue: { name: string; city: string; country_name: string } | null
 }
 
+export interface FestivalPerformanceData {
+  id: string
+  role: ArtistRole
+  attended: boolean
+  start_time: string | null
+  end_time: string | null
+  perf_order: number
+  artist: { id: string; name: string; image_url: string | null }
+}
+
+export interface FestivalStageData {
+  id: string
+  stage_name: string
+  stage_order: number
+  performances: FestivalPerformanceData[]
+}
+
+export interface FestivalDayData {
+  id: string
+  date: string
+  day_order: number
+  stages: FestivalStageData[]
+}
+
 export interface ConcertDetail extends ConcertListItem {
   user_id: string
   tour_name: string | null
@@ -41,6 +65,7 @@ export interface ConcertDetail extends ConcertListItem {
     billing_order: number
     artist: { id: string; name: string; image_url: string | null }
   }[]
+  festival_days: FestivalDayData[]
 }
 
 const LIST_SELECT =
@@ -60,12 +85,45 @@ export async function getConcert(id: string): Promise<ConcertDetail> {
   const { data, error } = await supabase
     .from('concerts')
     .select(
-      'id, user_id, date, type, status, festival_name, tour_name, ticket_type, ticket_price_paid, ticket_currency, personal_note, accred_type, accred_client, accred_photo_pit, accred_first_3_songs, headliner:artists!concerts_headliner_id_fkey(name, image_url), venue:venues!concerts_venue_id_fkey(name, city, country_name), venue_full:venues!concerts_venue_id_fkey(id, name, city, country, country_name), lineup:concert_artists(role, billing_order, artist:artists(id, name, image_url))',
+      'id, user_id, date, type, status, festival_name, tour_name, ticket_type, ticket_price_paid, ticket_currency, personal_note, accred_type, accred_client, accred_photo_pit, accred_first_3_songs, headliner:artists!concerts_headliner_id_fkey(name, image_url), venue:venues!concerts_venue_id_fkey(name, city, country_name), venue_full:venues!concerts_venue_id_fkey(id, name, city, country, country_name), lineup:concert_artists(role, billing_order, artist:artists(id, name, image_url)), festival_days(id, date, day_order, stages:festival_stages(id, stage_name, stage_order, performances(id, role, attended, start_time, end_time, perf_order, artist:artists(id, name, image_url))))',
     )
     .eq('id', id)
     .single()
   if (error) throw error
   return data as unknown as ConcertDetail
+}
+
+export interface FestivalPayload {
+  festival_name: string
+  venue_id: string | null
+  date: string
+  status: 'attended' | 'planned' | 'wishlist'
+  days: {
+    date: string
+    stages: {
+      stage_name: string
+      performances: {
+        artist_id: string
+        role: ArtistRole
+        attended: boolean
+        start_time: string | null
+        end_time: string | null
+      }[]
+    }[]
+  }[]
+}
+
+/** Atomically create (concertId null) or replace a festival's hierarchy. */
+export async function saveFestival(
+  concertId: string | null,
+  payload: FestivalPayload,
+): Promise<string> {
+  const { data, error } = await supabase.rpc('save_festival', {
+    p_concert_id: concertId,
+    p_payload: payload as never,
+  })
+  if (error) throw error
+  return data as string
 }
 
 export async function createConcert(
