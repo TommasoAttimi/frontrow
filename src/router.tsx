@@ -10,6 +10,9 @@ import { SignIn } from '@/features/auth/pages/SignIn'
 import { OAuthCallback } from '@/features/auth/pages/OAuthCallback'
 import { UsernameSelect } from '@/features/auth/pages/UsernameSelect'
 import { Home } from '@/features/home/pages/Home'
+import { LogShow } from '@/features/concerts/pages/LogShow'
+import { EditConcert } from '@/features/concerts/pages/EditConcert'
+import { ConcertDetail } from '@/features/concerts/pages/ConcertDetail'
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +30,12 @@ export const router = createBrowserRouter([
   },
   {
     element: <RequireProfile />,
-    children: [{ path: '/home', element: <Home /> }],
+    children: [
+      { path: '/home', element: <Home /> },
+      { path: '/log', element: <LogShow /> },
+      { path: '/show/:id', element: <ConcertDetail /> },
+      { path: '/show/:id/edit', element: <EditConcert /> },
+    ],
   },
   { path: '*', element: <Navigate to="/" replace /> },
 ])
