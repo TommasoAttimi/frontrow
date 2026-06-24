@@ -19,6 +19,11 @@ function hash(s: string): number {
   return h
 }
 
+export function gradientFor(name: string): string {
+  const [c1, c2] = GRADIENTS[hash(name) % GRADIENTS.length]
+  return `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`
+}
+
 function initialsOf(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean)
   if (parts.length === 0) return '?'

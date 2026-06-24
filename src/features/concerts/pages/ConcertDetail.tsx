@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { BackHeader } from '@/components/layout/BackHeader'
 import { Button } from '@/components/ui/Button'
 import { Spinner } from '@/components/ui/Spinner'
+import { AvatarTile, gradientFor } from '@/components/ui/AvatarTile'
 import { useConcert } from '../hooks/useConcerts'
 import { useDeleteConcert } from '../hooks/useConcertMutations'
 import { formatConcertDate } from '@/lib/utils/dates'
@@ -10,12 +10,17 @@ import { cn } from '@/lib/utils/cn'
 import { toast } from '@/stores/useUIStore'
 import type { ConcertDetail as ConcertDetailData } from '../api/concerts'
 
-const TABS = ['Info', 'Setlist', 'Photos', 'Notes'] as const
+const TABS = ['Info', 'Setlist', 'Photos', 'People'] as const
 type Tab = (typeof TABS)[number]
 
+const STATUS_LABEL: Record<string, string> = {
+  attended: 'Attended',
+  planned: 'Planned',
+  wishlist: 'Wishlist',
+}
+
 const ROLE_LABEL: Record<string, string> = {
-  headliner: 'Headliner',
-  support: 'Support',
+  support: 'Support act',
   special_guest: 'Special guest',
   opener: 'Opener',
 }
@@ -43,7 +48,6 @@ export function ConcertDetail() {
   if (isLoading || !data) {
     return (
       <div className="mx-auto min-h-screen w-full max-w-[440px]">
-        <BackHeader />
         <div className="flex justify-center py-20 text-orange">
           <Spinner size={28} />
         </div>
@@ -58,50 +62,92 @@ export function ConcertDetail() {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-[440px] pb-10">
-      <BackHeader
-        right={
+      {/* Hero */}
+      <div className="relative h-[260px] w-full" style={{ background: gradientFor(title) }}>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 4px, transparent 4px 8px)',
+          }}
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-fg-faint">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" />
+            <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="1.6" />
+            <path d="m21 15-5-5L5 21" stroke="currentColor" strokeWidth="1.6" />
+          </svg>
+          <span className="mt-2 font-body text-[11px] uppercase tracking-[0.1em]">Concert photo</span>
+        </div>
+        <div
+          className="absolute inset-x-0 bottom-0 h-28"
+          style={{ background: 'linear-gradient(to bottom, transparent, #0d0c16)' }}
+        />
+        {/* Controls */}
+        <div className="absolute inset-x-4 top-4 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            aria-label="Back"
+            className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-black/45 backdrop-blur"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 19l-7-7 7-7" stroke="#f0eeeb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
           <Link
             to={`/show/${id}/edit`}
-            className="px-2 font-body text-sm font-medium text-orange"
+            aria-label="Edit"
+            className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-black/45 backdrop-blur"
           >
-            Edit
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="#f0eeeb" strokeWidth="1.8" strokeLinecap="round" />
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="#f0eeeb" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
           </Link>
-        }
-      />
+        </div>
+      </div>
 
-      {/* Hero */}
-      <div className="px-6 pt-2">
-        <span className="font-body text-xs uppercase tracking-[0.08em] text-fg-subtle">
-          {data.type}
-          {data.status !== 'attended' ? ` · ${data.status}` : ''}
-        </span>
-        <h1 className="mt-1 font-display text-[28px] font-extrabold leading-tight tracking-[-0.5px] text-fg">
-          {title}
-        </h1>
-        <p className="mt-2 font-body text-sm text-fg-muted">
-          {data.venue
-            ? [data.venue.name, data.venue.city, data.venue.country_name]
-                .filter(Boolean)
-                .join(' · ')
-            : '—'}
-        </p>
-        <p className="mt-1 font-body text-sm text-fg-subtle">
-          {formatConcertDate(data.date)}
-        </p>
+      {/* Title block */}
+      <div className="-mt-4 px-6">
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="font-display text-[28px] font-extrabold leading-[1.05] tracking-[-0.6px] text-fg">
+            {title}
+          </h1>
+          <span className="mt-1.5 flex h-[26px] shrink-0 items-center rounded-lg border border-orange/[0.28] bg-orange/[0.14] px-2.5 font-body text-[11px] font-semibold text-orange">
+            {STATUS_LABEL[data.status] ?? data.status}
+          </span>
+        </div>
+        {data.tour_name && (
+          <p className="mt-1 font-body text-[13px] text-fg-faint">{data.tour_name}</p>
+        )}
+        <div className="mt-2.5 flex flex-wrap gap-4">
+          {data.venue && (
+            <Meta>
+              <PinIcon />
+              {[data.venue.name, data.venue.city].filter(Boolean).join(', ')}
+            </Meta>
+          )}
+          <Meta>
+            <CalIcon />
+            {formatConcertDate(data.date)}
+          </Meta>
+        </div>
       </div>
 
       {/* Tabs */}
-      <div className="mt-6 flex gap-1 border-b border-border px-6">
+      <div className="mt-5 flex border-b border-border px-6">
         {TABS.map((t) => (
           <button
             key={t}
             type="button"
             onClick={() => setTab(t)}
-            className={
+            className={cn(
+              'flex-1 border-b-2 pb-2.5 text-center font-body text-sm transition',
               tab === t
-                ? 'border-b-2 border-orange px-3 py-2 font-body text-sm font-semibold text-fg'
-                : 'border-b-2 border-transparent px-3 py-2 font-body text-sm text-fg-subtle'
-            }
+                ? 'border-orange font-semibold text-orange'
+                : 'border-transparent text-[#3a3a50]',
+            )}
           >
             {t}
           </button>
@@ -112,11 +158,7 @@ export function ConcertDetail() {
         {tab === 'Info' && <InfoTab data={data} />}
         {tab === 'Setlist' && <Placeholder text="Setlist tracking arrives in Sprint 5." />}
         {tab === 'Photos' && <Placeholder text="Photo uploads arrive in Sprint 5." />}
-        {tab === 'Notes' && (
-          <p className="whitespace-pre-wrap font-body text-sm text-fg-muted">
-            {data.personal_note || 'No notes yet.'}
-          </p>
-        )}
+        {tab === 'People' && <Placeholder text="Concert buddies arrive in Sprint 6." />}
       </div>
 
       <div className="px-6">
@@ -129,68 +171,102 @@ export function ConcertDetail() {
 }
 
 function InfoTab({ data }: { data: ConcertDetailData }) {
-  const lineup = [...data.lineup].sort((a, b) => a.billing_order - b.billing_order)
+  if (data.type === 'festival') return <FestivalSchedule data={data} />
+
+  const support = [...data.lineup]
+    .filter((l) => l.role !== 'headliner')
+    .sort((a, b) => a.billing_order - b.billing_order)
+  const hasTicket = !!data.ticket_type || data.ticket_price_paid != null
+
   return (
-    <div className="space-y-6">
-      {data.type === 'festival' ? (
-        <FestivalSchedule data={data} />
-      ) : (
-        <section>
-          <h2 className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.08em] text-fg-muted">
-            Lineup
-          </h2>
-          <ul className="space-y-1.5">
-            {lineup.map((l) => (
-              <li
-                key={l.artist.id}
-                className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3 py-2"
-              >
-                <span className="font-body text-sm text-fg">{l.artist.name}</span>
-                <span className="font-body text-xs text-fg-subtle">
-                  {ROLE_LABEL[l.role] ?? l.role}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {(data.tour_name || data.ticket_type || data.ticket_price_paid != null) && (
-        <section className="space-y-2">
-          {data.tour_name && <Row label="Tour" value={data.tour_name} />}
-          {data.ticket_type && <Row label="Ticket" value={data.ticket_type} />}
-          {data.ticket_price_paid != null && (
-            <Row
-              label="Paid"
-              value={`${data.ticket_price_paid}${data.ticket_currency ? ` ${data.ticket_currency}` : ''}`}
-            />
-          )}
-        </section>
-      )}
-
-      {data.accred_type && (
-        <section>
-          <h2 className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.08em] text-fg-muted">
-            Accreditation
-          </h2>
-          <div className="space-y-2">
-            <Row label="Type" value={data.accred_type} />
-            {data.accred_client && <Row label="Client" value={data.accred_client} />}
-            <Row label="Photo pit" value={data.accred_photo_pit ? 'Yes' : 'No'} />
-            <Row label="First 3 songs" value={data.accred_first_3_songs ? 'Yes' : 'No'} />
+    <div className="flex flex-col gap-3.5">
+      {hasTicket && (
+        <Card label="Ticket">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="mb-1 font-body text-xs text-fg-faint">Type</p>
+              <p className="font-display text-[17px] font-bold tracking-[-0.3px] text-fg">
+                {data.ticket_type ?? '—'}
+              </p>
+            </div>
+            {data.ticket_price_paid != null && (
+              <div className="text-right">
+                <p className="mb-1 font-body text-xs text-fg-faint">Paid</p>
+                <p className="font-display text-[17px] font-bold tracking-[-0.3px] text-orange">
+                  {data.ticket_price_paid}
+                  {data.ticket_currency ? ` ${data.ticket_currency}` : ''}
+                </p>
+              </div>
+            )}
           </div>
-        </section>
+        </Card>
+      )}
+
+      {support.length > 0 && (
+        <Card label="Support">
+          <div className="flex flex-col gap-3">
+            {support.map((l) => (
+              <div key={l.artist.id} className="flex items-center gap-2.5">
+                <AvatarTile name={l.artist.name} size={36} radius={9} />
+                <div>
+                  <p className="font-body text-sm font-medium text-[#c8c6d8]">{l.artist.name}</p>
+                  <p className="mt-0.5 font-body text-[11px] uppercase tracking-[0.05em] text-fg-disabled">
+                    {ROLE_LABEL[l.role] ?? l.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
+      {data.personal_note && (
+        <Card label="Notes">
+          <p className="whitespace-pre-wrap font-body text-sm italic leading-[1.6] text-fg-subtle">
+            {data.personal_note}
+          </p>
+        </Card>
+      )}
+
+      {!hasTicket && support.length === 0 && !data.personal_note && (
+        <Placeholder text="No extra details yet. Tap edit to add ticket info, support acts, or notes." />
       )}
     </div>
   )
 }
 
-function Row({ label, value }: { label: string; value: string }) {
+function Card({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between border-b border-border py-2">
-      <span className="font-body text-sm text-fg-subtle">{label}</span>
-      <span className="font-body text-sm text-fg">{value}</span>
+    <div className="rounded-2xl border border-border bg-white/[0.03] p-4">
+      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.1em] text-[#3a3a50]">
+        {label}
+      </p>
+      {children}
     </div>
+  )
+}
+
+function Meta({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-1.5 font-body text-[13px] text-fg-faint">{children}</div>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#45445a" strokeWidth="2.2" />
+      <circle cx="12" cy="10" r="3" stroke="#45445a" strokeWidth="2.2" />
+    </svg>
+  )
+}
+
+function CalIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" stroke="#45445a" strokeWidth="1.8" />
+      <path d="M16 2v4M8 2v4M3 10h18" stroke="#45445a" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   )
 }
 
@@ -214,10 +290,7 @@ function FestivalSchedule({ data }: { data: ConcertDetailData }) {
             {[...day.stages]
               .sort((a, b) => a.stage_order - b.stage_order)
               .map((stage) => (
-                <div
-                  key={stage.id}
-                  className="rounded-xl border border-border bg-white/[0.02] p-3"
-                >
+                <div key={stage.id} className="rounded-xl border border-border bg-white/[0.02] p-3">
                   <p className="mb-2 font-body text-[11px] font-semibold uppercase tracking-[0.08em] text-orange">
                     {stage.stage_name}
                   </p>
