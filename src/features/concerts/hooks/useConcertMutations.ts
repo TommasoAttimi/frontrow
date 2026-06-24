@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { supabase } from '@/lib/supabase'
-import { createArtist, createVenue } from '../api/catalog'
+import { findOrCreateArtist, findOrCreateVenue } from '../api/catalog'
 import {
   createConcert,
   deleteConcert,
@@ -14,19 +14,19 @@ import type { PressType, TicketType } from '@/types/domain'
 
 async function resolveArtist(ref: ArtistRef): Promise<string> {
   if (ref.id) return ref.id
-  const created = await createArtist(ref.name)
-  return created.id
+  const artist = await findOrCreateArtist(ref.name)
+  return artist.id
 }
 
 async function resolveVenue(ref: VenueRef): Promise<string> {
   if (ref.id) return ref.id
-  const created = await createVenue({
+  const venue = await findOrCreateVenue({
     name: ref.name,
     city: ref.city as string,
     country: ref.country as string,
     country_name: ref.country_name as string,
   })
-  return created.id
+  return venue.id
 }
 
 /** Authoritative current user id — matches the JWT sent to PostgREST (auth.uid()). */

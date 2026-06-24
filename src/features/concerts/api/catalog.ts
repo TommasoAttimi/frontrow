@@ -18,14 +18,12 @@ export async function searchArtists(query: string): Promise<ComboboxItem[]> {
   }))
 }
 
-export async function createArtist(name: string): Promise<Artist> {
-  const { data, error } = await supabase
-    .from('artists')
-    .insert({ name })
-    .select('*')
-    .single()
+/** Returns the canonical artist for `name`, creating it only if none exists
+ *  (case-insensitive, atomic — see find_or_create_artist RPC). */
+export async function findOrCreateArtist(name: string): Promise<Artist> {
+  const { data, error } = await supabase.rpc('find_or_create_artist', { p_name: name })
   if (error) throw error
-  return data
+  return data as Artist
 }
 
 // ---------- Venues ----------
@@ -44,17 +42,20 @@ export async function searchVenues(query: string): Promise<ComboboxItem[]> {
   }))
 }
 
-export async function createVenue(input: {
+/** Returns the canonical venue for (name, city, country), creating it only if
+ *  none exists (case-insensitive, atomic — see find_or_create_venue RPC). */
+export async function findOrCreateVenue(input: {
   name: string
   city: string
   country: string
   country_name: string
 }): Promise<Venue> {
-  const { data, error } = await supabase
-    .from('venues')
-    .insert(input)
-    .select('*')
-    .single()
+  const { data, error } = await supabase.rpc('find_or_create_venue', {
+    p_name: input.name,
+    p_city: input.city,
+    p_country: input.country,
+    p_country_name: input.country_name,
+  })
   if (error) throw error
-  return data
+  return data as Venue
 }

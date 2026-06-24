@@ -774,6 +774,19 @@ export type Database = {
     }
     Functions: {
       can_read_concert: { Args: { cid: string }; Returns: boolean }
+      find_or_create_artist: {
+        Args: { p_name: string }
+        Returns: Database["public"]["Tables"]["artists"]["Row"]
+      }
+      find_or_create_venue: {
+        Args: {
+          p_city: string
+          p_country: string
+          p_country_name: string
+          p_name: string
+        }
+        Returns: Database["public"]["Tables"]["venues"]["Row"]
+      }
       is_concert_owner: { Args: { cid: string }; Returns: boolean }
       username_available: { Args: { name: string }; Returns: boolean }
     }
