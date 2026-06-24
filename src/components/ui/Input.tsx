@@ -6,11 +6,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string
   hint?: string
   valid?: boolean
+  leading?: React.ReactNode
   trailing?: React.ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, hint, valid, trailing, className, id, name, ...rest }, ref) => {
+  ({ label, error, hint, valid, leading, trailing, className, id, name, ...rest }, ref) => {
     const inputId = id ?? name
     return (
       <div className="w-full">
@@ -23,6 +24,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div className="relative">
+          {leading && (
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-fg-disabled">
+              {leading}
+            </div>
+          )}
           <input
             id={inputId}
             name={name}
@@ -34,6 +40,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               'focus:border-orange focus:outline-none',
               valid && !error && 'border-success/40',
               error && 'border-error bg-error/5',
+              leading && 'pl-9',
               trailing && 'pr-11',
               className,
             )}

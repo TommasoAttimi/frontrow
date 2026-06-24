@@ -1,49 +1,37 @@
 import { cn } from '@/lib/utils/cn'
 
-/** Wristband mark (handoff Option B): dark tile + orange band + "FR" stub. */
-export function Logo({ size = 56, className }: { size?: number; className?: string }) {
+/** Wristband mark (exact handoff SVG): dark tile, orange band, perforation, "FR". */
+export function Logo({ size = 34, className }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 56 56"
-      fill="none"
+      viewBox="0 0 80 80"
       className={className}
       role="img"
       aria-label="FrontRow"
     >
-      <rect width="56" height="56" rx="14" fill="#111118" />
-      <rect x="10" y="22" width="36" height="12" rx="3" fill="#e8752a" />
+      <rect width="80" height="80" rx="18" fill="#111118" />
+      <rect x="8" y="28" width="64" height="24" rx="12" fill="#e8752a" />
       <line
-        x1="28"
-        y1="22"
-        x2="28"
-        y2="34"
-        stroke="#0d0c16"
+        x1="56"
+        y1="28"
+        x2="56"
+        y2="52"
+        stroke="rgba(0,0,0,0.3)"
         strokeWidth="1.5"
-        strokeDasharray="2 2"
+        strokeDasharray="3,2"
       />
       <text
-        x="18"
-        y="31.5"
-        fill="#fff"
-        fontFamily="Syne, sans-serif"
-        fontSize="9"
-        fontWeight="800"
+        x="28"
+        y="44"
         textAnchor="middle"
-      >
-        F
-      </text>
-      <text
-        x="37"
-        y="31.5"
-        fill="#fff"
         fontFamily="Syne, sans-serif"
-        fontSize="9"
         fontWeight="800"
-        textAnchor="middle"
+        fontSize="12"
+        fill="white"
       >
-        R
+        FR
       </text>
     </svg>
   )
@@ -52,9 +40,12 @@ export function Logo({ size = 56, className }: { size?: number; className?: stri
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span
-      className={cn('font-display text-2xl font-extrabold tracking-[-0.5px] text-fg', className)}
+      className={cn(
+        'font-display text-lg font-extrabold tracking-[-0.3px] text-fg',
+        className,
+      )}
     >
-      Front<span className="text-orange">Row</span>
+      FrontRow
     </span>
   )
 }
