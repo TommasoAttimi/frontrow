@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
 import { Spinner } from '@/components/ui/Spinner'
 import { AvatarTile, gradientFor } from '@/components/ui/AvatarTile'
+import { SetlistTab } from '../components/SetlistTab'
+import { PhotosTab } from '../components/PhotosTab'
 import { useConcert } from '../hooks/useConcerts'
 import { useDeleteConcert } from '../hooks/useConcertMutations'
 import { formatConcertDate } from '@/lib/utils/dates'
@@ -156,8 +158,10 @@ export function ConcertDetail() {
 
       <div className="px-6 py-5">
         {tab === 'Info' && <InfoTab data={data} />}
-        {tab === 'Setlist' && <Placeholder text="Setlist tracking arrives in Sprint 5." />}
-        {tab === 'Photos' && <Placeholder text="Photo uploads arrive in Sprint 5." />}
+        {tab === 'Setlist' && (
+          <SetlistTab concertId={data.id} syncedFromSetlistFm={!!data.setlist_fm_id} />
+        )}
+        {tab === 'Photos' && <PhotosTab data={data} />}
         {tab === 'People' && <Placeholder text="Concert buddies arrive in Sprint 6." />}
       </div>
 

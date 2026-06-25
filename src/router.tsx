@@ -16,6 +16,7 @@ import { MyShows } from '@/features/concerts/pages/MyShows'
 import { LogShow } from '@/features/concerts/pages/LogShow'
 import { EditConcert } from '@/features/concerts/pages/EditConcert'
 import { ConcertDetail } from '@/features/concerts/pages/ConcertDetail'
+import { SetlistEditor } from '@/features/concerts/pages/SetlistEditor'
 import { Stats } from '@/features/stats/pages/Stats'
 import { Profile } from '@/features/profile/pages/Profile'
 
@@ -50,6 +51,7 @@ export const router = createBrowserRouter([
       { path: '/log', element: <LogShow /> },
       { path: '/show/:id', element: <ConcertDetail /> },
       { path: '/show/:id/edit', element: <EditConcert /> },
+      { path: '/show/:id/setlist', element: <SetlistEditor /> },
       { path: '/on-this-day', element: <OnThisDay /> },
     ],
   },
