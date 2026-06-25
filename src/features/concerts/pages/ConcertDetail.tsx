@@ -109,7 +109,7 @@ export function ConcertDetail() {
       </div>
 
       {/* Title block */}
-      <div className="-mt-4 px-6">
+      <div className="px-6 pt-3">
         <div className="flex items-start justify-between gap-3">
           <h1 className="font-display text-[28px] font-extrabold leading-[1.05] tracking-[-0.6px] text-fg">
             {title}
