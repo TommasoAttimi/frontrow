@@ -19,6 +19,7 @@ import { ConcertDetail } from '@/features/concerts/pages/ConcertDetail'
 import { SetlistEditor } from '@/features/concerts/pages/SetlistEditor'
 import { Stats } from '@/features/stats/pages/Stats'
 import { Profile } from '@/features/profile/pages/Profile'
+import { Notifications } from '@/features/social/pages/Notifications'
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ export const router = createBrowserRouter([
       { path: '/show/:id/edit', element: <EditConcert /> },
       { path: '/show/:id/setlist', element: <SetlistEditor /> },
       { path: '/on-this-day', element: <OnThisDay /> },
+      { path: '/notifications', element: <Notifications /> },
     ],
   },
   { path: '*', element: <Navigate to="/" replace /> },

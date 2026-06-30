@@ -6,6 +6,7 @@ import { signOut } from '@/features/auth/api/auth'
 import { useConcerts } from '@/features/concerts/hooks/useConcerts'
 import { ConcertCard } from '@/features/concerts/components/ConcertCard'
 import { getConcertStats, groupConcertsByYear } from '@/features/concerts/utils'
+import { FriendsTab } from '@/features/social/components/FriendsTab'
 import { toast } from '@/stores/useUIStore'
 import { cn } from '@/lib/utils/cn'
 
@@ -148,11 +149,7 @@ export function Profile() {
             Detailed stats arrive in Sprint 7.
           </p>
         )}
-        {tab === 'Friends' && (
-          <p className="py-8 text-center font-body text-sm text-fg-subtle">
-            Friends arrive in Sprint 6.
-          </p>
-        )}
+        {tab === 'Friends' && <FriendsTab />}
       </div>
     </div>
   )

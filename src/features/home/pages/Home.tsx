@@ -9,6 +9,7 @@ import { useProfile } from '@/features/auth/hooks/useProfile'
 import { useConcerts } from '@/features/concerts/hooks/useConcerts'
 import { ConcertCard } from '@/features/concerts/components/ConcertCard'
 import { getConcertStats } from '@/features/concerts/utils'
+import { useUnreadCount } from '@/features/social/hooks/useNotifications'
 import type { ConcertListItem } from '@/features/concerts/api/concerts'
 
 function greetingFor(date = new Date()): string {
@@ -21,6 +22,7 @@ function greetingFor(date = new Date()): string {
 export function Home() {
   const { data: profile } = useProfile()
   const { data: concerts, isLoading } = useConcerts()
+  const unread = useUnreadCount()
 
   const stats = useMemo(() => getConcertStats(concerts ?? []), [concerts])
   const upNext = useMemo(
@@ -47,9 +49,9 @@ export function Home() {
           <Wordmark />
         </div>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Notifications"
+          <Link
+            to="/notifications"
+            aria-label={unread > 0 ? `Notifications, ${unread} unread` : 'Notifications'}
             className="relative flex h-9 w-9 items-center justify-center rounded-[10px] bg-white/[0.05]"
           >
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -61,8 +63,10 @@ export function Home() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="absolute right-[7px] top-[7px] h-[7px] w-[7px] rounded-full border-[1.5px] border-app bg-orange" />
-          </button>
+            {unread > 0 && (
+              <span className="absolute right-[7px] top-[7px] h-[7px] w-[7px] rounded-full border-[1.5px] border-app bg-orange" />
+            )}
+          </Link>
           <Link to="/profile" aria-label="Profile">
             <AvatarTile name={name || 'FR'} size={36} radius={10} brand />
           </Link>
